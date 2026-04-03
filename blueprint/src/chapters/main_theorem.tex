@@ -19,31 +19,20 @@ The sharp admissible Gaussian scale is $c_\star = c_0$. Equivalently:
 \end{theorem}
 
 \begin{proof}\leanok
-The domination part is now formal bookkeeping. Theorem~\ref{thm:gauss-ge-J}
+For domination: Theorem~\ref{thm:gauss-ge-J}
 shows that the Gaussian stop-loss transform at scale $c_0$ dominates the sharp
 envelope $J_G$. Theorem~\ref{thm:cx-route} then upgrades this stop-loss
 comparison to full convex domination.
 
-For sharpness, Theorem~\ref{thm:extremizer-stoploss} identifies the stop-loss of
-the canonical witness $\mu^\star$ with the envelope itself. At the specific
+For sharpness: Theorem~\ref{thm:extremizer-stoploss} identifies the stop-loss of
+the canonical witness $\mu^\star$ with the envelope itself. At the
 threshold $u = cz$, the Gaussian stop-loss of scale $c$ evaluates to
 $c\varphi(z) - up_0$, while the envelope is at least $B - up_0$. If
-$c < c_0 = B/\varphi(z)$, then the witness stop-loss is strictly larger. Taking
-the hinge function $x \mapsto (x-u)_+$ therefore exhibits a convex test
+$c < c_0 = B/\varphi(z)$, then the witness stop-loss is strictly larger. The
+hinge function $x \mapsto (x-u)_+$ therefore exhibits a convex test
 function for which the comparison fails.
 \end{proof}
 
-\begin{corollary}[Named comparison and sharpness statements]\label{cor:public}
-\lean{gaussianDomination_c0}\leanok
-\lean{gaussianSharpness_below_c0}\leanok
-These are the two separately stated results corresponding to the domination and
-sharpness clauses of Theorem~\ref{thm:main}.
-\end{corollary}
-
-\begin{proof}\leanok
-The endpoint theorem in \texttt{GaussianMain.lean} bundles the equality
-$c_\star = c_0$ together with the two quantified conclusions. The file
-\texttt{GaussianAsymptotics.lean} states the comparison and sharpness
-components separately so that a reader can inspect the main inequality and the
-canonical counterexample without opening the internal proof machinery.
-\end{proof}
+For code navigation, the two halves also appear separately in
+\texttt{GaussianAsymptotics.lean} as \texttt{gaussianDomination\_c0} and
+\texttt{gaussianSharpness\_below\_c0}.

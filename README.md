@@ -4,10 +4,10 @@ This repository contains the Lean formalization of the sharp one-dimensional
 Gaussian convex comparison theorem for mean-zero real random variables with
 two-sided sub-Gaussian tails.
 
-The repository has two reader-facing surfaces:
+The repository includes:
 
-- the source tree on `main`
-- the generated GitHub Pages site with the landing page, blueprint, and Lean docs
+- the Lean source on `main`
+- a GitHub Pages site with a landing page, proof blueprint, and Lean documentation
 
 ## Repository Layout
 
@@ -39,6 +39,7 @@ The axiom audit for the key endpoint theorems should report only:
 GitHub Actions uses `leanchecker` as its kernel-replay audit:
 
 ```sh
+lake env leanchecker ConvexSubgaussian
 lake env leanchecker ConvexSubgaussian.GaussianMain
 lake env leanchecker ConvexSubgaussian.GaussianAsymptotics
 ```
@@ -97,13 +98,13 @@ If you want to inspect the formalized theorem statements first, start with:
 - `ConvexSubgaussian/GaussianAsymptotics.lean`
 - `ConvexSubgaussian/CoreDefs.lean`
 
-`GaussianMain.lean` is the theorem-facing endpoint file. It defines:
+`GaussianMain.lean` contains the main theorem. It defines:
 
 - `AdmissibleScale`
 - `cStar`
 - `sharp_convexSubgaussianComparison`
 
-`GaussianAsymptotics.lean` contains the public comparison constants and the
+`GaussianAsymptotics.lean` contains the explicit comparison constants and the
 two named auxiliary results:
 
 - `gaussianDomination_c0`
@@ -112,6 +113,5 @@ two named auxiliary results:
 ## Notes
 
 - The paper link is a placeholder until the preprint is public.
-- The landing page source link is a placeholder until the final GitHub remote is fixed.
 - Repository privacy is a GitHub-side setting; this source tree is prepared for an initially private repo.
 - Legacy archives, local draft workspaces, and build trees are intentionally excluded from the cleaned public repo.

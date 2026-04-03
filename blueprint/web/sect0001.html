@@ -12,10 +12,10 @@
 <meta name="generator" content="plasTeX" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Reader-facing theorem surface</title>
+<title>The comparison problem</title>
 <link rel="next" href="sect0002.html" title="Comparison and sharpness statements" />
-<link rel="prev" href="chap-setup.html" title="Setup and endpoint constants" />
-<link rel="up" href="chap-setup.html" title="Setup and endpoint constants" />
+<link rel="prev" href="chap-setup.html" title="Setup and constants" />
+<link rel="up" href="chap-setup.html" title="Setup and constants" />
 <link rel="stylesheet" href="styles/theme-white.css" />
 <link rel="stylesheet" href="styles/amsthm.css" />
 <link rel="stylesheet" href="styles/showmore.css" />
@@ -43,11 +43,11 @@
   </ul>
  </li>
 <li class=" active">
-  <a href="chap-setup.html"><span class="toc_ref">2</span> <span class="toc_entry">Setup and endpoint constants</span></a>
+  <a href="chap-setup.html"><span class="toc_ref">2</span> <span class="toc_entry">Setup and constants</span></a>
   <span class="expand-toc">▼</span>
   <ul class="sub-toc-1 active">
      <li class=" active current">
-  <a href="sect0001.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Reader-facing theorem surface</span></a>
+  <a href="sect0001.html"><span class="toc_ref">2.1</span> <span class="toc_entry">The comparison problem</span></a>
  </li>
 <li class="">
   <a href="sect0002.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Comparison and sharpness statements</span></a>
@@ -105,13 +105,13 @@
   <span class="expand-toc">▶</span>
   <ul class="sub-toc-1">
      <li class="">
-  <a href="sect0010.html"><span class="toc_ref">7.1</span> <span class="toc_entry">Public files</span></a>
+  <a href="sect0010.html"><span class="toc_ref">7.1</span> <span class="toc_entry">Theorem statements</span></a>
  </li>
 <li class="">
-  <a href="sect0011.html"><span class="toc_ref">7.2</span> <span class="toc_entry">Internal proof file</span></a>
+  <a href="sect0011.html"><span class="toc_ref">7.2</span> <span class="toc_entry">Proof internals</span></a>
  </li>
 <li class="">
-  <a href="sect0012.html"><span class="toc_ref">7.3</span> <span class="toc_entry">Reading order</span></a>
+  <a href="sect0012.html"><span class="toc_ref">7.3</span> <span class="toc_entry">Suggested reading order</span></a>
  </li>
 
   </ul>
@@ -125,15 +125,19 @@
 
 
 <div class="main-text">
-<h1 id="a0000000002">2.1 Reader-facing theorem surface</h1>
-<p>The public Lean API is built around the random-variable formulation of the comparison problem. The endpoint file exposes the admissible Gaussian scales and their infimum. </p>
+<h1 id="a0000000002">2.1 The comparison problem</h1>
+<p>We formalize the following question: what is the smallest positive constant \(c\) such that every centered real random variable \(X\) satisfying </p>
+<div class="displaymath" id="a0000000015">
+  \[  \mathbb {P}(|X| {\gt} t) \le 2 e^{-t^2/2} \qquad (t \ge 0)  \]
+</div>
+<p> is dominated in convex order by the centered Gaussian law of standard deviation&#160;\(c\)? </p>
 <div class="definition_thmwrapper theorem-style-definition" id="def:endpoint">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
     </span>
     <span class="definition_thmlabel">1</span>
-    <span class="definition_thmtitle">Endpoint quantities</span>
+    <span class="definition_thmtitle">Admissible scale and sharp constant</span>
     <div class="thm_header_extras">
 
     
@@ -167,11 +171,11 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p> The declaration <span class="ttfamily">AdmissibleScale</span> says that a positive number \(c\) is admissible if every centered real random variable \(X\) with the two-sided tail bound </p>
-<div class="displaymath" id="a0000000015">
-  \[  \mathbb {P}(|X| {\gt} t) \le 2 e^{-t^2/2} \qquad (t \ge 0)  \]
+  <p> A positive number \(c\) is <em>admissible</em> if every centered real random variable \(X\) with the two-sided sub-Gaussian tail bound above satisfies </p>
+<div class="displaymath" id="a0000000016">
+  \[  \mathbb {E}[f(X)] \le \mathbb {E}[f(cG)]  \]
 </div>
-<p> is convex-dominated by the centered Gaussian law of standard deviation \(c\). The quantity \(c_\star \) is then defined as the infimum of all such admissible scales. </p>
+<p> for every convex function \(f\) whose expectations on both sides are finite. The <em>sharp constant</em> \(c_\star \) is the infimum of all admissible scales. </p>
 
   </div>
 </div>
@@ -181,7 +185,7 @@
     Definition
     </span>
     <span class="definition_thmlabel">2</span>
-    <span class="definition_thmtitle">Explicit Gaussian comparison constants</span>
+    <span class="definition_thmtitle">Explicit constants</span>
     <div class="thm_header_extras">
 
     
@@ -215,23 +219,22 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p> The explicit constant is built from the sub-Gaussian tail cap </p>
-<div class="displaymath" id="a0000000016">
+  <p> The explicit constant \(c_0\) is built from the sub-Gaussian tail cap </p>
+<div class="displaymath" id="a0000000017">
   \[  s_G(t) := \min \{ 1, 2e^{-t^2/2}\} , \qquad t_0 := \sqrt{2 \log 2},  \]
 </div>
 <p> the total tail mass </p>
-<div class="displaymath" id="a0000000017">
+<div class="displaymath" id="a0000000018">
   \[  A := \int _0^\infty s_G(t)\, dt, \qquad B := A/2,  \]
 </div>
 <p> the unique threshold \(a {\gt} t_0\) solving </p>
-<div class="displaymath" id="a0000000018">
+<div class="displaymath" id="a0000000019">
   \[  H(a) = a s_G(a) + \int _a^\infty s_G(t)\, dt = B,  \]
 </div>
 <p> the height \(p_0 := s_G(a)\), the Gaussian tail quantile \(z\) satisfying \(\overline{\Phi }(z) = p_0\), and finally </p>
-<div class="displaymath" id="a0000000019">
+<div class="displaymath" id="a0000000020">
   \[  c_0 := \frac{B}{\varphi (z)}.  \]
 </div>
-<p> The public support file exposes these definitions exactly so the reader can see which constant is being proved optimal. </p>
 
   </div>
 </div>
@@ -246,9 +249,9 @@
 
   <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
 
-  <a href="chap-setup.html" title="Setup and endpoint constants"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+  <a href="chap-setup.html" title="Setup and constants"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
 </a>
-  <a href="chap-setup.html" title="Setup and endpoint constants"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+  <a href="chap-setup.html" title="Setup and constants"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
 </a>
   <a href="sect0002.html" title="Comparison and sharpness statements"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
 </a>

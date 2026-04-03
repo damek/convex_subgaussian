@@ -43,6 +43,7 @@ jobs:
 
       - name: Kernel replay audit
         run: |
+          lake env leanchecker ConvexSubgaussian
           lake env leanchecker ConvexSubgaussian.GaussianMain
           lake env leanchecker ConvexSubgaussian.GaussianAsymptotics
 

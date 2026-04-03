@@ -5,15 +5,11 @@ import ConvexSubgaussian.GaussianMain
 /-!
 # ConvexSubgaussian
 
-Umbrella import for the public one-dimensional Gaussian comparison
+Umbrella import for the one-dimensional Gaussian convex comparison
 formalization.
 
-Readers should usually start with:
-
-- `ConvexSubgaussian.GaussianMain`
-- `ConvexSubgaussian.GaussianAsymptotics`
-
-The endpoint theorem `ConvexSubgaussian.sharp_convexSubgaussianComparison`
-lives in `GaussianMain`. The paper constants and the public intermediate
-domination and sharpness results live in `GaussianAsymptotics`.
+- `ConvexSubgaussian.GaussianMain`: the sharp comparison theorem
+- `ConvexSubgaussian.GaussianAsymptotics`: explicit constants and
+  the domination/sharpness results
+- `ConvexSubgaussian.CoreDefs`: hinge, stop-loss, sub-Gaussian condition
 -/

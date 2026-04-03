@@ -1,40 +1,36 @@
 \chapter{Stop-loss route}\label{chap:stoploss}
 
-This chapter contains the one-dimensional mechanism behind the comparison: the
-problem is translated into the stop-loss transform
-$u \mapsto \E[(X-u)_+]$, a sharp universal envelope for that transform is
-proved under the sub-Gaussian tail cap, and that envelope bound is then lifted
-back to convex domination.
+This chapter develops the one-dimensional mechanism behind the comparison.
+The convex-order question is translated into the stop-loss transform
+$u \mapsto \E[(X-u)_+]$: a sharp universal envelope for that transform is
+proved under the sub-Gaussian tail cap, and the envelope bound is then
+lifted back to full convex domination.
 
 \section{Layer-cake and stop-loss identities}
 
 \begin{lemma}[Layer-cake for hinge functions]\label{lem:layercake}
 \lean{layer_cake_hinge}\leanok
-For every probability measure $\mu$ on $\R$ and every $u \ge 0$, the hinge
-integral can be written as
+For every probability measure $\mu$ on $\R$ and every $u \ge 0$,
 \[
   \int (x-u)_+\,d\mu(x) = \int_u^\infty \Prb_\mu(x > t)\,dt.
 \]
 \end{lemma}
 
 \begin{proof}\leanok
-The Lean proof expands $(x-u)_+$ as the integral of the indicator
-$1_{\{x>t\}}$ over $t \in [u,\infty)$ and applies Tonelli's theorem to swap the
-order of integration. This is the standard layer-cake identity specialized to
-hinge functions.
+Expand $(x-u)_+$ as $\int_u^\infty \mathbf{1}_{\{x>t\}}\,dt$ and apply
+Tonelli's theorem to swap the order of integration.
 \end{proof}
 
 \begin{lemma}[Stop-loss as a tail integral]\label{lem:stoploss-tail}
 \lean{stopLoss_eq_integral_tail}\leanok
-If $\mu$ is a probability measure with integrable identity, then for every
-$u \ge 0$ its stop-loss transform can be written as the tail integral from
+If $\mu$ is a probability measure with finite first moment, then for every
+$u \ge 0$ its stop-loss transform equals the tail integral from
 Lemma~\ref{lem:layercake}.
 \end{lemma}
 
 \begin{proof}\leanok
-This is a direct packaging of Lemma~\ref{lem:layercake} in the notation
-\texttt{stopLoss}. The result is stated separately because it is the interface
-used throughout the rest of the formal route.
+Immediate from Lemma~\ref{lem:layercake} and the definition of the
+stop-loss transform.
 \end{proof}
 
 \section{The sharp stop-loss envelope}
@@ -51,31 +47,29 @@ $B$, $a$, and $p_0$.
 \end{theorem}
 
 \begin{proof}\leanok
-The proof splits into the two regions $u \le a$ and $u \ge a$.
+Split into the two regions $u \le a$ and $u \ge a$.
 For $u \le a$, the mean-zero condition and the tail cap bound the positive part
-of the first moment by $B$, which gives the affine upper bound
+of the first moment by $B$, giving the affine upper bound
 $B - p_0 u$. For $u \ge a$, the layer-cake identity rewrites the stop-loss as a
-tail integral and the cap is integrated directly. The Lean code records the two
-cases separately and then combines them into the single envelope formula.
+tail integral and the cap is integrated directly.
 \end{proof}
 
-\begin{theorem}[Extension from nonnegative thresholds to all thresholds]\label{thm:extend-all-u}
+\begin{theorem}[Extension to all thresholds]\label{thm:extend-all-u}
 \lean{stopLoss_extend_all_u}\leanok
-The stop-loss control extends from $u \ge 0$ to every real threshold $u$ by
-applying the same envelope argument to $-X$ and then using the mean-zero
-identity relating the stop-loss transforms of $X$ and $-X$.
+The stop-loss bound extends from $u \ge 0$ to every real threshold $u$ by
+applying the same argument to $-X$ and using the mean-zero identity relating
+the stop-loss transforms of $X$ and $-X$.
 \end{theorem}
 
 \begin{proof}\leanok
-The proof is one-dimensional and elementary: once the bound is known for
-nonnegative thresholds, the negative-threshold case is rewritten in terms of the
+The negative-threshold case is rewritten in terms of the
 positive-threshold stop-loss of $-X$. Because the tail assumption is symmetric
 and the mean is zero, the transformed problem satisfies the same hypotheses.
 \end{proof}
 
 \section{From stop-loss control to convex domination}
 
-\begin{theorem}[Convex domination route at the sharp scale]\label{thm:cx-route}
+\begin{theorem}[Convex domination from stop-loss comparison]\label{thm:cx-route}
 \lean{convexDomination_c0_via_reduction}\leanok
 \uses{thm:extend-all-u}
 If the Gaussian stop-loss transform dominates the envelope $J_G$ pointwise,
@@ -84,10 +78,8 @@ comparator at that same scale.
 \end{theorem}
 
 \begin{proof}\leanok
-The formal route first proves the comparison for simple convex test functions,
-that is, finite sums of affine functions and hinges. The lemmas
-\texttt{max\_affine\_is\_simple} and \texttt{convexReduction\_to\_simple\_c0}
-then approximate an arbitrary convex integrable function from below by a
-monotone sequence of such simple convex functions. Monotone convergence passes
-the inequality to the limit and yields the full convex-order statement.
+First prove the comparison for simple convex functions (finite sums of
+affine functions and hinges). Then approximate an arbitrary convex integrable
+function from below by a monotone sequence of such simple convex functions.
+Monotone convergence passes the inequality to the limit.
 \end{proof}

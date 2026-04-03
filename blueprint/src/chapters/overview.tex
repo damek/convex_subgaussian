@@ -1,25 +1,25 @@
 \chapter{Overview}\label{chap:overview}
 
-This blueprint maps the Lean formalization of the sharp one-dimensional
-Gaussian convex comparison theorem. The public endpoint proves that the
-smallest Gaussian scale dominating every centered real random variable with
-two-sided sub-Gaussian tails is the explicit constant $c_0$, and that every
-smaller scale fails against a canonical extremal law.
+This blueprint describes the proof of the sharp one-dimensional
+Gaussian convex comparison theorem: the smallest constant $c_0$ such that
+every centered real random variable with two-sided sub-Gaussian tails
+$\Prb(|X|>t)\le 2e^{-t^2/2}$ is dominated in convex order by $c_0 G$,
+where $G\sim\mathcal N(0,1)$.
+The constant $c_0$ is determined by an explicit system of equations
+and is attained by a canonical extremal distribution that saturates the
+tail constraint.
 
-Every theorem cited here is formalized in Lean without \texttt{sorry} and the
-reader-facing endpoint is intentionally small: the file
-\texttt{ConvexSubgaussian/GaussianMain.lean} exposes only the main scale
-definition and the final sharp theorem.
+Every theorem cited here is formalized in Lean~4 without \texttt{sorry}.
 
 \subsection*{Navigation}
 
 \begin{itemize}
 \item \textbf{Main result:}
   Theorem~\ref{thm:main} in Chapter~\ref{chap:main}.
-\item \textbf{Public constants and theorem surface:}
+\item \textbf{Setup and constants:}
   Chapter~\ref{chap:setup}.
 \item \textbf{Stop-loss route:}
-  layer-cake, stop-loss identities, sharp envelope, and the reduction from
+  layer-cake and stop-loss identities, the sharp envelope, and the reduction from
   stop-loss comparison to convex domination in
   Chapter~\ref{chap:stoploss}.
 \item \textbf{Envelope and extremizer:}
@@ -30,7 +30,7 @@ definition and the final sharp theorem.
   dominates the envelope at the scale $c_0$ in
   Chapter~\ref{chap:gaussian-comparator}.
 \item \textbf{Module guide:}
-  the file-by-file map of the Lean sources in
+  a file-by-file map of the Lean sources in
   Chapter~\ref{chap:modules}.
 \item \hyperref[dep_graph]{Dependency graph}.
 \end{itemize}

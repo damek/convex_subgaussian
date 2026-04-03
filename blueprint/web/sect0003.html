@@ -43,11 +43,11 @@
   </ul>
  </li>
 <li class="">
-  <a href="chap-setup.html"><span class="toc_ref">2</span> <span class="toc_entry">Setup and endpoint constants</span></a>
+  <a href="chap-setup.html"><span class="toc_ref">2</span> <span class="toc_entry">Setup and constants</span></a>
   <span class="expand-toc">▶</span>
   <ul class="sub-toc-1">
      <li class="">
-  <a href="sect0001.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Reader-facing theorem surface</span></a>
+  <a href="sect0001.html"><span class="toc_ref">2.1</span> <span class="toc_entry">The comparison problem</span></a>
  </li>
 <li class="">
   <a href="sect0002.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Comparison and sharpness statements</span></a>
@@ -105,13 +105,13 @@
   <span class="expand-toc">▶</span>
   <ul class="sub-toc-1">
      <li class="">
-  <a href="sect0010.html"><span class="toc_ref">7.1</span> <span class="toc_entry">Public files</span></a>
+  <a href="sect0010.html"><span class="toc_ref">7.1</span> <span class="toc_entry">Theorem statements</span></a>
  </li>
 <li class="">
-  <a href="sect0011.html"><span class="toc_ref">7.2</span> <span class="toc_entry">Internal proof file</span></a>
+  <a href="sect0011.html"><span class="toc_ref">7.2</span> <span class="toc_entry">Proof internals</span></a>
  </li>
 <li class="">
-  <a href="sect0012.html"><span class="toc_ref">7.3</span> <span class="toc_entry">Reading order</span></a>
+  <a href="sect0012.html"><span class="toc_ref">7.3</span> <span class="toc_entry">Suggested reading order</span></a>
  </li>
 
   </ul>
@@ -142,7 +142,7 @@
 
     <a class="icon proof" href="sect0003.html#lem:layercake">#</a>
     
-    <a class="icon proof" href="sect0003.html#a0000000021"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0003.html#a0000000022"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -169,14 +169,14 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p> For every probability measure \(\mu \) on \(\mathbb {R}\) and every \(u \ge 0\), the hinge integral can be written as </p>
-<div class="displaymath" id="a0000000022">
+  <p> For every probability measure \(\mu \) on \(\mathbb {R}\) and every \(u \ge 0\), </p>
+<div class="displaymath" id="a0000000023">
   \[  \int (x-u)_+\, d\mu (x) = \int _u^\infty \mathbb {P}_\mu (x {\gt} t)\, dt.  \]
 </div>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000021">
+<div class="proof_wrapper" id="a0000000022">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -184,7 +184,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>The Lean proof expands \((x-u)_+\) as the integral of the indicator \(1_{\{ x{\gt}t\} }\) over \(t \in [u,\infty )\) and applies Tonelli’s theorem to swap the order of integration. This is the standard layer-cake identity specialized to hinge functions. </p>
+  <p>Expand \((x-u)_+\) as \(\int _u^\infty \mathbf{1}_{\{ x{\gt}t\} }\, dt\) and apply Tonelli’s theorem to swap the order of integration. </p>
 
   </div>
 </div>
@@ -204,7 +204,7 @@
 
     <a class="icon proof" href="sect0003.html#lem:stoploss-tail">#</a>
     
-    <a class="icon proof" href="sect0003.html#a0000000023"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0003.html#a0000000024"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -231,11 +231,11 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p> If \(\mu \) is a probability measure with integrable identity, then for every \(u \ge 0\) its stop-loss transform can be written as the tail integral from Lemma&#160;<a href="sect0003.html#lem:layercake">4</a>. </p>
+  <p> If \(\mu \) is a probability measure with finite first moment, then for every \(u \ge 0\) its stop-loss transform equals the tail integral from Lemma&#160;<a href="sect0003.html#lem:layercake">4</a>. </p>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000023">
+<div class="proof_wrapper" id="a0000000024">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -243,7 +243,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>This is a direct packaging of Lemma&#160;<a href="sect0003.html#lem:layercake">4</a> in the notation <span class="ttfamily">stopLoss</span>. The result is stated separately because it is the interface used throughout the rest of the formal route. </p>
+  <p>Immediate from Lemma&#160;<a href="sect0003.html#lem:layercake">4</a> and the definition of the stop-loss transform. </p>
 
   </div>
 </div>

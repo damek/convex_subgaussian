@@ -12,11 +12,11 @@ open Set Filter Topology
 namespace ConvexSubgaussian
 
 /-!
-# Paper-Facing Gaussian Theorem
+# Sharp Gaussian Comparison Theorem
 
-This file is the public endpoint for the one-dimensional Gaussian comparison
-result. It contains only the reader-facing final definition of the optimal
-comparison scale and the final sharp theorem.
+This file contains the main theorem: the sharp one-dimensional convex
+sub-Gaussian comparison constant is `c0`, and no smaller Gaussian scale
+suffices.
 -/
 
 /-- `AdmissibleScale c` is the statement
@@ -88,8 +88,6 @@ private lemma c0_le_of_admissible {c : Real} (hc : AdmissibleScale c) : c0 ≤ c
   exact (not_lt_of_ge hDom) hFail
 
 /-- Sharp one-dimensional convex sub-Gaussian comparison.
-
-This theorem exposes the full reader-facing endpoint:
 
 - `cStar = c0`
 - `c0` is admissible

@@ -29,5 +29,3 @@ R_strict_mono_on
 monotone_ratio_principle
 gaussian_dominates_J
 sharp_convexSubgaussianComparison
-gaussianDomination_c0
-gaussianSharpness_below_c0

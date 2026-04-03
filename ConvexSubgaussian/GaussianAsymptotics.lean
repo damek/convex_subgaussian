@@ -12,15 +12,13 @@ open Set Filter Topology
 namespace ConvexSubgaussian
 
 /-!
-# Gaussian Asymptotics
+# Gaussian Comparison Constants and Named Results
 
-This file exposes the paper constants together with the two named results used
-to assemble the endpoint theorem:
+This file defines the explicit constants (`t0`, `A`, `B`, `a`, `p0`, `z`,
+`c0`) and the two named results:
 
-- `gaussianDomination_c0`
-- `gaussianSharpness_below_c0`
-
-The heavy proof machinery remains in internal modules.
+- `gaussianDomination_c0`: convex domination at the sharp scale
+- `gaussianSharpness_below_c0`: failure below the sharp scale
 -/
 
 /-- The tail-cap transition point `sqrt (2 log 2)`. -/
@@ -139,7 +137,7 @@ private lemma mapped_integrable_convex
       hmeas
       hX.1.aemeasurable).2 hInt
 
-/-- Public domination theorem at the sharp Gaussian scale `c₀`. -/
+/-- Convex domination at the sharp Gaussian scale `c₀`. -/
 theorem gaussianDomination_c0
     {Ω : Type*} [MeasurableSpace Ω]
     (P : Measure Ω) [IsProbabilityMeasure P]
@@ -191,7 +189,7 @@ private lemma canonical_extremal_is_subgaussian :
       ≤ 2 * Real.exp (-(t ^ 2) / 2)
     exact hReal
 
-/-- Public sharpness theorem below `c₀`, with a canonical extremal witness. -/
+/-- Sharpness below `c₀`: the canonical extremal witness beats the Gaussian. -/
 theorem gaussianSharpness_below_c0
     {c : Real} (hc : 0 < c) (hc_lt : c < c0) :
     IsProbabilityMeasure OneDimConvexDom.muStar ∧

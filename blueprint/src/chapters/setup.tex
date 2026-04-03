@@ -1,26 +1,28 @@
-\chapter{Setup and endpoint constants}\label{chap:setup}
+\chapter{Setup and constants}\label{chap:setup}
 
-\section{Reader-facing theorem surface}
+\section{The comparison problem}
 
-The public Lean API is built around the random-variable formulation of the
-comparison problem. The endpoint file exposes the admissible Gaussian scales
-and their infimum.
-
-\begin{definition}[Endpoint quantities]\label{def:endpoint}
-\lean{AdmissibleScale}\leanok
-\lean{cStar}\leanok
-The declaration \texttt{AdmissibleScale} says that a positive number $c$ is
-admissible if every centered real random variable $X$ with the two-sided tail
-bound
+We formalize the following question: what is the smallest positive constant
+$c$ such that every centered real random variable $X$ satisfying
 \[
   \Prb(|X| > t) \le 2 e^{-t^2/2} \qquad (t \ge 0)
 \]
-is convex-dominated by the centered Gaussian law of standard deviation $c$.
-The quantity $c_\star$ is then defined as the infimum of all such admissible
-scales.
+is dominated in convex order by the centered Gaussian law of standard
+deviation~$c$?
+
+\begin{definition}[Admissible scale and sharp constant]\label{def:endpoint}
+\lean{AdmissibleScale}\leanok
+\lean{cStar}\leanok
+A positive number $c$ is \emph{admissible} if every centered real random
+variable $X$ with the two-sided sub-Gaussian tail bound above satisfies
+\[
+  \E[f(X)] \le \E[f(cG)]
+\]
+for every convex function $f$ whose expectations on both sides are finite.
+The \emph{sharp constant} $c_\star$ is the infimum of all admissible scales.
 \end{definition}
 
-\begin{definition}[Explicit Gaussian comparison constants]\label{def:constants}
+\begin{definition}[Explicit constants]\label{def:constants}
 \lean{t0}\leanok
 \lean{A}\leanok
 \lean{B}\leanok
@@ -29,7 +31,7 @@ scales.
 \lean{z}\leanok
 \lean{c0}\leanok
 \lean{gaussianScale}\leanok
-The explicit constant is built from the sub-Gaussian tail cap
+The explicit constant $c_0$ is built from the sub-Gaussian tail cap
 \[
   s_G(t) := \min\{1, 2e^{-t^2/2}\}, \qquad
   t_0 := \sqrt{2 \log 2},
@@ -47,33 +49,30 @@ $\overline{\Phi}(z) = p_0$, and finally
 \[
   c_0 := \frac{B}{\varphi(z)}.
 \]
-The public support file exposes these definitions exactly so the reader can see
-which constant is being proved optimal.
 \end{definition}
 
 \section{Comparison and sharpness statements}
 
-The endpoint theorem is assembled from one comparison statement and one
-sharpness statement.
+The sharp theorem splits into two halves:
 
-\begin{theorem}[Named comparison and sharpness results]\label{thm:public-support}
+\begin{theorem}[Domination and sharpness]\label{thm:public-support}
 \lean{gaussianDomination_c0}\leanok
 \lean{gaussianSharpness_below_c0}\leanok
-The theorem \texttt{gaussianDomination\_c0} is the comparison statement at the
-optimal Gaussian scale: it shows that the Gaussian law at scale $c_0$
-dominates every admissible random variable against every convex integrable test
-function. The theorem
-\texttt{gaussianSharpness\_below\_c0} proves that every smaller positive scale
-$c < c_0$ fails already for the canonical witness measure $\mu^\star$ and a
-hinge test function of the form $x \mapsto (x-u)_+$.
+\begin{enumerate}
+\item \textbf{Domination.} Every centered sub-Gaussian random variable
+  is convex-dominated by the Gaussian law at scale~$c_0$.
+\item \textbf{Sharpness.} For every $c < c_0$, domination fails:
+  the canonical witness measure $\mu^\star$ and a hinge test function
+  $x \mapsto (x-u)_+$ exhibit a strict inequality in the opposite direction.
+\end{enumerate}
 \end{theorem}
 
 \begin{proof}\leanok
-The proof infrastructure for these two statements lives in the internal analytic
-module. The public wrapper \texttt{gaussianDomination\_c0} pushes a random
-variable $X$ forward to its law, checks the mean-zero and tail hypotheses on
-that law, and then invokes the internal measure-theoretic domination theorem.
-The public sharpness theorem packages the explicit extremal witness already
-constructed in Lean and rewrites its stop-loss strictness into the reader-facing
-hinge-integral inequality.
+For the domination half, the proof pushes a random variable $X$ forward to its
+law, verifies that the pushforward inherits the mean-zero and tail hypotheses,
+and then applies the measure-level domination result from the internal
+analytic argument (Theorem~\ref{thm:cx-route}).
+For sharpness, the extremal witness $\mu^\star$ is constructed explicitly and
+its stop-loss transform is shown to exceed the Gaussian stop-loss at the
+threshold $u = cz$.
 \end{proof}

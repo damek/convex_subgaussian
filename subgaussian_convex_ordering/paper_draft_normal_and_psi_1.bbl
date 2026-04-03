@@ -1,0 +1,23 @@
+\begin{thebibliography}{DITc26}
+
+\bibitem[AS64]{AbramowitzStegun}
+Milton Abramowitz and Irene~A. Stegun, editors.
+\newblock {\em Handbook of Mathematical Functions with Formulas, Graphs, and
+  Mathematical Tables}, volume~55 of {\em Applied Mathematics Series}.
+\newblock National Bureau of Standards, Washington, D.C., 1964.
+
+\bibitem[DITc26]{optimization-constants-repo}
+Damek Davis, Paata Ivanisvili, Terence Tao, and contributors.
+\newblock Optimization constants in mathematics.
+\newblock GitHub repository, 2026.
+
+\bibitem[SS07]{ShakedShanthikumar}
+Moshe Shaked and J.~George Shanthikumar.
+\newblock {\em Stochastic Orders}.
+\newblock Springer Series in Statistics. Springer, New York, 2007.
+
+\bibitem[vH25]{vanHandelSubgComparison}
+Ramon van Handel.
+\newblock On the subgaussian comparison theorem, 2025.
+
+\end{thebibliography}

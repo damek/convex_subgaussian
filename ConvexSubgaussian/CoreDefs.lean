@@ -16,12 +16,9 @@ open Set Filter Topology
 /-!
 # Core Definitions
 
-This file contains the basic hinge/stop-loss definitions and the tail-sense
-sub-Gaussian hypothesis used by the public Gaussian comparison theorems.
-
-The heavy Gaussian comparison proof is kept in internal modules. Reader-facing
-API wrappers live in `ConvexSubgaussian.GaussianAsymptotics` and
-`ConvexSubgaussian.GaussianMain`.
+Basic definitions used throughout the formalization: the hinge function
+`(x - u)₊`, the stop-loss transform, and the tail-sense sub-Gaussian
+condition with zero mean.
 -/
 
 /-- The hinge function `(x - u)_+`. -/

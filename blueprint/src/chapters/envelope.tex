@@ -1,10 +1,11 @@
 \chapter{Envelope and extremizer}\label{chap:envelope}
 
-This chapter explains why the envelope from Chapter~\ref{chap:stoploss} is
-sharp. The constants $a$ and $p_0$ are tuned so that the piecewise formula for
+This chapter shows that the stop-loss envelope from Chapter~\ref{chap:stoploss}
+is sharp.
+The constants $a$ and $p_0$ are tuned so that the piecewise formula for
 $J_G$ is tangent to the Gaussian comparator at the correct contact point, and a
-canonical probability measure $\mu^\star$ is then built to saturate the tail cap
-and the envelope exactly.
+canonical probability measure $\mu^\star$ is constructed to saturate the tail cap
+and attain the envelope exactly.
 
 \section{The envelope parameters}
 
@@ -19,7 +20,7 @@ $J_G$ lies above the affine function $u \mapsto B - p_0 u$ on $[0,\infty)$.
 The map $H(x)=x s_G(x)+\int_x^\infty s_G(t)\,dt$ is strictly decreasing on
 $(t_0,\infty)$ and decays to $0$ at infinity, while $H(t_0)=A=2B$.
 This gives a unique solution to $H(a)=B$. The tangent-line lower bound for
-$J_G$ is then a direct consequence of the piecewise definition of the envelope:
+$J_G$ follows from the piecewise definition of the envelope:
 on $[0,a]$ the envelope is exactly the affine line, and on $[a,\infty)$ the
 tail-integral branch stays above its common value at $u=a$.
 \end{proof}
@@ -31,7 +32,7 @@ tail-integral branch stays above its common value at $u=a$.
 \lean{muStar_isProbability}\leanok
 \lean{mean_muStar}\leanok
 \lean{absTail_muStar_eq_s}\leanok
-Lean constructs an explicit probability measure $\mu^\star$ with mean zero such
+There exists an explicit probability measure $\mu^\star$ with mean zero such
 that
 \[
   \Prb_{\mu^\star}(|x|>t) = s_G(t) \qquad (t \ge 0).
@@ -40,11 +41,11 @@ This is the canonical witness showing that the stop-loss envelope is sharp.
 \end{theorem}
 
 \begin{proof}\leanok
-The formalization defines a piecewise density whose right tail matches the
-sub-Gaussian cap and whose left side is adjusted so that the total mass is one
-and the mean vanishes. The key calculations show that the right and left tail
-integrals match the desired formulas exactly, after which the probability and
-mean-zero statements follow by direct integration.
+Define a piecewise density whose right tail matches the sub-Gaussian cap
+and whose left side is adjusted so that the total mass is one
+and the mean vanishes. The right and left tail integrals match the desired
+formulas exactly, and the probability and mean-zero statements follow by
+direct integration.
 \end{proof}
 
 \begin{theorem}[The extremizer attains the envelope]\label{thm:extremizer-stoploss}
@@ -57,10 +58,9 @@ For every $u \ge 0$,
 \end{theorem}
 
 \begin{proof}\leanok
-Once the tail identity from Theorem~\ref{thm:extremizer-tail} is known, the
+Given the tail identity from Theorem~\ref{thm:extremizer-tail}, the
 layer-cake formula turns the stop-loss of $\mu^\star$ into the integral of the
 tail cap itself. That integral is exactly the definition of the envelope on the
-tail branch, while the affine branch is forced by the centering condition. This
-shows that the upper envelope from Chapter~\ref{chap:stoploss} is not merely an
-upper bound but the true optimum.
+tail branch, while the affine branch is forced by the centering condition. Thus
+the upper envelope from Chapter~\ref{chap:stoploss} is the true optimum.
 \end{proof}

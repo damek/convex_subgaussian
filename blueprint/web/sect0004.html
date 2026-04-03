@@ -43,11 +43,11 @@
   </ul>
  </li>
 <li class="">
-  <a href="chap-setup.html"><span class="toc_ref">2</span> <span class="toc_entry">Setup and endpoint constants</span></a>
+  <a href="chap-setup.html"><span class="toc_ref">2</span> <span class="toc_entry">Setup and constants</span></a>
   <span class="expand-toc">▶</span>
   <ul class="sub-toc-1">
      <li class="">
-  <a href="sect0001.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Reader-facing theorem surface</span></a>
+  <a href="sect0001.html"><span class="toc_ref">2.1</span> <span class="toc_entry">The comparison problem</span></a>
  </li>
 <li class="">
   <a href="sect0002.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Comparison and sharpness statements</span></a>
@@ -105,13 +105,13 @@
   <span class="expand-toc">▶</span>
   <ul class="sub-toc-1">
      <li class="">
-  <a href="sect0010.html"><span class="toc_ref">7.1</span> <span class="toc_entry">Public files</span></a>
+  <a href="sect0010.html"><span class="toc_ref">7.1</span> <span class="toc_entry">Theorem statements</span></a>
  </li>
 <li class="">
-  <a href="sect0011.html"><span class="toc_ref">7.2</span> <span class="toc_entry">Internal proof file</span></a>
+  <a href="sect0011.html"><span class="toc_ref">7.2</span> <span class="toc_entry">Proof internals</span></a>
  </li>
 <li class="">
-  <a href="sect0012.html"><span class="toc_ref">7.3</span> <span class="toc_entry">Reading order</span></a>
+  <a href="sect0012.html"><span class="toc_ref">7.3</span> <span class="toc_entry">Suggested reading order</span></a>
  </li>
 
   </ul>
@@ -142,7 +142,7 @@
 
     <a class="icon proof" href="sect0004.html#thm:envelope">#</a>
     
-    <a class="icon proof" href="sect0004.html#a0000000024"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0004.html#a0000000025"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -170,14 +170,14 @@
   </div>
   <div class="theorem_thmcontent">
   <p> Assume that \(\mu \) is centered and satisfies the tail cap \(\mathbb {P}_\mu (|x|{\gt}t)\le s_G(t)\) for every \(t \ge 0\). Then for every \(u \ge 0\), </p>
-<div class="displaymath" id="a0000000025">
+<div class="displaymath" id="a0000000026">
   \[  \mathrm{stopLoss}_\mu (u) \le J_G(u),  \]
 </div>
 <p> where \(J_G\) is the explicit envelope built from the constants \(B\), \(a\), and \(p_0\). </p>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000024">
+<div class="proof_wrapper" id="a0000000025">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -185,7 +185,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>The proof splits into the two regions \(u \le a\) and \(u \ge a\). For \(u \le a\), the mean-zero condition and the tail cap bound the positive part of the first moment by \(B\), which gives the affine upper bound \(B - p_0 u\). For \(u \ge a\), the layer-cake identity rewrites the stop-loss as a tail integral and the cap is integrated directly. The Lean code records the two cases separately and then combines them into the single envelope formula. </p>
+  <p>Split into the two regions \(u \le a\) and \(u \ge a\). For \(u \le a\), the mean-zero condition and the tail cap bound the positive part of the first moment by \(B\), giving the affine upper bound \(B - p_0 u\). For \(u \ge a\), the layer-cake identity rewrites the stop-loss as a tail integral and the cap is integrated directly. </p>
 
   </div>
 </div>
@@ -195,7 +195,7 @@
     Theorem
     </span>
     <span class="theorem_thmlabel">7</span>
-    <span class="theorem_thmtitle">Extension from nonnegative thresholds to all thresholds</span>
+    <span class="theorem_thmtitle">Extension to all thresholds</span>
     <div class="thm_header_extras">
 
     
@@ -205,7 +205,7 @@
 
     <a class="icon proof" href="sect0004.html#thm:extend-all-u">#</a>
     
-    <a class="icon proof" href="sect0004.html#a0000000026"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0004.html#a0000000027"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -232,11 +232,11 @@
         </div>
   </div>
   <div class="theorem_thmcontent">
-  <p> The stop-loss control extends from \(u \ge 0\) to every real threshold \(u\) by applying the same envelope argument to \(-X\) and then using the mean-zero identity relating the stop-loss transforms of \(X\) and \(-X\). </p>
+  <p> The stop-loss bound extends from \(u \ge 0\) to every real threshold \(u\) by applying the same argument to \(-X\) and using the mean-zero identity relating the stop-loss transforms of \(X\) and \(-X\). </p>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000026">
+<div class="proof_wrapper" id="a0000000027">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -244,7 +244,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>The proof is one-dimensional and elementary: once the bound is known for nonnegative thresholds, the negative-threshold case is rewritten in terms of the positive-threshold stop-loss of \(-X\). Because the tail assumption is symmetric and the mean is zero, the transformed problem satisfies the same hypotheses. </p>
+  <p>The negative-threshold case is rewritten in terms of the positive-threshold stop-loss of \(-X\). Because the tail assumption is symmetric and the mean is zero, the transformed problem satisfies the same hypotheses. </p>
 
   </div>
 </div>

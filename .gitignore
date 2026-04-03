@@ -1,0 +1,17 @@
+.DS_Store
+.lake/
+.site/
+.venv/
+__pycache__/
+*.pyc
+
+docbuild/.lake/
+docbuild/.cache/
+docbuild/.venv/
+
+blueprint/.venv/
+blueprint/build/
+blueprint/tmp/
+blueprint/.plastex/
+blueprint/src/*.paux
+scripts/__pycache__/

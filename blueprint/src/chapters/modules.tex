@@ -1,0 +1,38 @@
+\chapter{Module guide}\label{chap:modules}
+
+This chapter records the intended role of each main Lean file.
+
+\section{Public files}
+
+\begin{itemize}
+\item \textbf{\texttt{ConvexSubgaussian/GaussianMain.lean}}:
+  the theorem-facing endpoint file. This is the file a reader should open first.
+\item \textbf{\texttt{ConvexSubgaussian/GaussianAsymptotics.lean}}:
+  the public support layer exposing the explicit constants and the two public
+  comparison theorems used by the endpoint file.
+\item \textbf{\texttt{ConvexSubgaussian/CoreDefs.lean}}:
+  project-level definitions such as the hinge function, stop-loss transform, and
+  the random-variable version of the sub-Gaussian tail condition.
+\item \textbf{\texttt{ConvexSubgaussian.lean}}:
+  the umbrella import for the public package.
+\end{itemize}
+
+\section{Internal proof file}
+
+\begin{itemize}
+\item \textbf{\texttt{ConvexSubgaussian/Internal/GaussianProof.lean}}:
+  the analytic proof body. This file contains the layer-cake lemmas, the
+  envelope construction, the Gaussian closed-form calculations, the monotone
+  ratio argument, the construction of the extremal measure, and the reduction
+  from stop-loss comparison to arbitrary convex test functions.
+\end{itemize}
+
+\section{Reading order}
+
+\begin{itemize}
+\item Start with \texttt{GaussianMain.lean} for the final theorem.
+\item Then read \texttt{GaussianAsymptotics.lean} for the explicit constant
+  and the public domination/sharpness split.
+\item Use this blueprint to navigate the internal route in
+  \texttt{Internal/GaussianProof.lean}.
+\end{itemize}

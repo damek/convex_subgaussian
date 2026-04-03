@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Main theorem</title>
+<link rel="next" href="chap-modules.html" title="Module guide" />
+<link rel="prev" href="sect0009.html" title="The tail region u ≥a" />
+<link rel="up" href="index.html" title="The sharp one-dimensional convex sub-Gaussian comparison constant — Blueprint" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">The sharp one-dimensional convex sub-Gaussian comparison constant — Blueprint</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="chap-overview.html"><span class="toc_ref">1</span> <span class="toc_entry">Overview</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="chap-overview.html#a0000000014"><span class="toc_ref"></span> <span class="toc_entry">Navigation</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="chap-setup.html"><span class="toc_ref">2</span> <span class="toc_entry">Setup and endpoint constants</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Reader-facing theorem surface</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Comparison and sharpness statements</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="chap-stoploss.html"><span class="toc_ref">3</span> <span class="toc_entry">Stop-loss route</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html"><span class="toc_ref">3.1</span> <span class="toc_entry">Layer-cake and stop-loss identities</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">3.2</span> <span class="toc_entry">The sharp stop-loss envelope</span></a>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">3.3</span> <span class="toc_entry">From stop-loss control to convex domination</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="chap-envelope.html"><span class="toc_ref">4</span> <span class="toc_entry">Envelope and extremizer</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0006.html"><span class="toc_ref">4.1</span> <span class="toc_entry">The envelope parameters</span></a>
+ </li>
+<li class="">
+  <a href="sect0007.html"><span class="toc_ref">4.2</span> <span class="toc_entry">The canonical extremal measure</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="chap-gaussian-comparator.html"><span class="toc_ref">5</span> <span class="toc_entry">Gaussian comparator</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0008.html"><span class="toc_ref">5.1</span> <span class="toc_entry">Closed form and tangent point</span></a>
+ </li>
+<li class="">
+  <a href="sect0009.html"><span class="toc_ref">5.2</span> <span class="toc_entry">The tail region \(u \ge a\)</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active current">
+  <a href="chap-main.html"><span class="toc_ref">6</span> <span class="toc_entry">Main theorem</span></a>
+ </li>
+<li class="">
+  <a href="chap-modules.html"><span class="toc_ref">7</span> <span class="toc_entry">Module guide</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0010.html"><span class="toc_ref">7.1</span> <span class="toc_entry">Public files</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html"><span class="toc_ref">7.2</span> <span class="toc_entry">Internal proof file</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">7.3</span> <span class="toc_entry">Reading order</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="chap:main">6 Main theorem</h1>
+
+<p>Combining the envelope domination from Chapter&#160;<a href="chap-gaussian-comparator.html">5</a> with the extremal witness from Chapter&#160;<a href="chap-envelope.html">4</a> yields the sharp comparison theorem. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:main">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">16</span>
+    <span class="theorem_thmtitle">Sharp one-dimensional convex sub-Gaussian comparison</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="chap-main.html#thm:main">#</a>
+    
+    <a class="icon proof" href="chap-main.html#a0000000041"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#thm:cx-route">Theorem 8</a></li>
+          
+          <li><a href="sect0007.html#thm:extremizer-stoploss">Theorem 11</a></li>
+          
+          <li><a href="sect0009.html#thm:gauss-ge-J">Theorem 15</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="../../docs/find/#doc/sharp_convexSubgaussianComparison" class="lean_decl">sharp_convexSubgaussianComparison</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  The sharp admissible Gaussian scale is \(c_\star = c_0\). Equivalently: </p>
+<ol class="enumerate">
+  <li><p>Every centered real random variable satisfying \(\mathbb {P}(|X|{\gt}t)\le 2e^{-t^2/2}\) for all \(t \ge 0\) is convex-dominated by the centered Gaussian law of scale \(c_0\). </p>
+</li>
+  <li><p>For every \(c {\lt} c_0\), convex domination by the Gaussian law of scale \(c\) fails, already for the canonical witness \(\mu ^\star \) and an explicit hinge test function. </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000041">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>The domination part is now formal bookkeeping. Theorem&#160;<a href="sect0009.html#thm:gauss-ge-J">15</a> shows that the Gaussian stop-loss transform at scale \(c_0\) dominates the sharp envelope \(J_G\). Theorem&#160;<a href="sect0005.html#thm:cx-route">8</a> then upgrades this stop-loss comparison to full convex domination. </p>
+<p>For sharpness, Theorem&#160;<a href="sect0007.html#thm:extremizer-stoploss">11</a> identifies the stop-loss of the canonical witness \(\mu ^\star \) with the envelope itself. At the specific threshold \(u = cz\), the Gaussian stop-loss of scale \(c\) evaluates to \(c\varphi (z) - up_0\), while the envelope is at least \(B - up_0\). If \(c {\lt} c_0 = B/\varphi (z)\), then the witness stop-loss is strictly larger. Taking the hinge function \(x \mapsto (x-u)_+\) therefore exhibits a convex test function for which the comparison fails. </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="cor:public">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">17</span>
+    <span class="corollary_thmtitle">Named comparison and sharpness statements</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="chap-main.html#cor:public">#</a>
+    
+    <a class="icon proof" href="chap-main.html#a0000000042"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="../../docs/find/#doc/gaussianSharpness_below_c0" class="lean_decl">gaussianSharpness_below_c0</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p> These are the two separately stated results corresponding to the domination and sharpness clauses of Theorem&#160;<a href="chap-main.html#thm:main">16</a>. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000042">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>The endpoint theorem in <span class="ttfamily">GaussianMain.lean</span> bundles the equality \(c_\star = c_0\) together with the two quantified conclusions. The file <span class="ttfamily">GaussianAsymptotics.lean</span> states the comparison and sharpness components separately so that a reader can inspect the main inequality and the canonical counterexample without opening the internal proof machinery. </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0009.html" title="The tail region \(u \ge a\)"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="The sharp one-dimensional convex sub-Gaussian comparison constant — Blueprint"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="chap-modules.html" title="Module guide"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

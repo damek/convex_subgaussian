@@ -1,0 +1,79 @@
+\chapter{Setup and endpoint constants}\label{chap:setup}
+
+\section{Reader-facing theorem surface}
+
+The public Lean API is built around the random-variable formulation of the
+comparison problem. The endpoint file exposes the admissible Gaussian scales
+and their infimum.
+
+\begin{definition}[Endpoint quantities]\label{def:endpoint}
+\lean{AdmissibleScale}\leanok
+\lean{cStar}\leanok
+The declaration \texttt{AdmissibleScale} says that a positive number $c$ is
+admissible if every centered real random variable $X$ with the two-sided tail
+bound
+\[
+  \Prb(|X| > t) \le 2 e^{-t^2/2} \qquad (t \ge 0)
+\]
+is convex-dominated by the centered Gaussian law of standard deviation $c$.
+The quantity $c_\star$ is then defined as the infimum of all such admissible
+scales.
+\end{definition}
+
+\begin{definition}[Explicit Gaussian comparison constants]\label{def:constants}
+\lean{t0}\leanok
+\lean{A}\leanok
+\lean{B}\leanok
+\lean{a}\leanok
+\lean{p0}\leanok
+\lean{z}\leanok
+\lean{c0}\leanok
+\lean{gaussianScale}\leanok
+The explicit constant is built from the sub-Gaussian tail cap
+\[
+  s_G(t) := \min\{1, 2e^{-t^2/2}\}, \qquad
+  t_0 := \sqrt{2 \log 2},
+\]
+the total tail mass
+\[
+  A := \int_0^\infty s_G(t)\,dt, \qquad B := A/2,
+\]
+the unique threshold $a > t_0$ solving
+\[
+  H(a) = a s_G(a) + \int_a^\infty s_G(t)\,dt = B,
+\]
+the height $p_0 := s_G(a)$, the Gaussian tail quantile $z$ satisfying
+$\overline{\Phi}(z) = p_0$, and finally
+\[
+  c_0 := \frac{B}{\varphi(z)}.
+\]
+The public support file exposes these definitions exactly so the reader can see
+which constant is being proved optimal.
+\end{definition}
+
+\section{Comparison and sharpness statements}
+
+The endpoint theorem is assembled from one comparison statement and one
+sharpness statement.
+
+\begin{theorem}[Named comparison and sharpness results]\label{thm:public-support}
+\lean{gaussianDomination_c0}\leanok
+\lean{gaussianSharpness_below_c0}\leanok
+The theorem \texttt{gaussianDomination\_c0} is the comparison statement at the
+optimal Gaussian scale: it shows that the Gaussian law at scale $c_0$
+dominates every admissible random variable against every convex integrable test
+function. The theorem
+\texttt{gaussianSharpness\_below\_c0} proves that every smaller positive scale
+$c < c_0$ fails already for the canonical witness measure $\mu^\star$ and a
+hinge test function of the form $x \mapsto (x-u)_+$.
+\end{theorem}
+
+\begin{proof}\leanok
+The proof infrastructure for these two statements lives in the internal analytic
+module. The public wrapper \texttt{gaussianDomination\_c0} pushes a random
+variable $X$ forward to its law, checks the mean-zero and tail hypotheses on
+that law, and then invokes the internal measure-theoretic domination theorem.
+The public sharpness theorem packages the explicit extremal witness already
+constructed in Lean and rewrites its stop-loss strictness into the reader-facing
+hinge-integral inequality.
+\end{proof}

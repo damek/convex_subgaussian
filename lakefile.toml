@@ -1,0 +1,11 @@
+name = "ConvexSubgaussian"
+version = "0.1.0"
+defaultTargets = ["ConvexSubgaussian"]
+
+[[lean_lib]]
+name = "ConvexSubgaussian"
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "bd255db579144c4f2ea2553cfccf6ecd8b171e0b"

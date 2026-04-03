@@ -1,0 +1,6 @@
+import ConvexSubgaussian.GaussianAsymptotics
+import ConvexSubgaussian.GaussianMain
+
+#print axioms ConvexSubgaussian.gaussianDomination_c0
+#print axioms ConvexSubgaussian.gaussianSharpness_below_c0
+#print axioms ConvexSubgaussian.sharp_convexSubgaussianComparison

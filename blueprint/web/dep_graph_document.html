@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dependency graph</title>
+  <meta name="generator" content="plasTeX" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles/theme-white.css" />
+  <link rel="stylesheet" href="styles/dep_graph.css" />
+  
+  <script type="text/x-mathjax-config">
+  
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  
+  </script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">  </script>
+
+
+<link rel="stylesheet" href="styles/extra_styles.css" />
+
+</head>
+
+<body>
+<header>
+  <a class="toc" href="index.html">Home</a>
+  <h1 id="doc_title">Dependencies</h1>
+</header>
+<div class="wrapper">
+<div class="content">
+  <div id="Legend">
+    <span id="legend_title" class="title">Legend
+    <div class="btn">
+       <div class="bar"></div>
+       <div class="bar"></div>
+       <div class="bar"></div>
+    </div></span> 
+    <dl class="legend">
+      
+      <dt>Boxes</dt><dd>definitions</dd>
+      
+      <dt>Ellipses</dt><dd>theorems and lemmas</dd>
+      
+      <dt>Blue border</dt><dd>the <em>statement</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Orange border</dt><dd>the <em>statement</em> of this result is not ready to be formalized; the blueprint needs more work</dd>
+      
+      <dt>Blue background</dt><dd>the <em>proof</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Green border</dt><dd>the <em>statement</em> of this result is formalized</dd>
+      
+      <dt>Green background</dt><dd>the <em>proof</em> of this result is formalized</dd>
+      
+      <dt>Dark green background</dt><dd>the <em>proof</em> of this result and all its ancestors are formalized</dd>
+      
+      <dt>Dark green border</dt><dd>this is in Mathlib</dd>
+      
+    </dl>
+  </div>
+    <div id="graph"></div>
+<div id="statements">
+
+    
+    <div class="dep-modal-container" id="cor:public_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="cor:public" style="display: none">
+    <div class="thm_thmheading">
+      <span class="corollary_thmcaption">
+      Corollary
+      </span>
+      <span class="corollary_thmlabel">17</span><span class="corollary_thmtitle">Named comparison and sharpness statements</span></div>
+    <div class="thm_thmcontent"><p> These are the two separately stated results corresponding to the domination and sharpness clauses of Theorem&#160;<a href="chap-main.html#thm:main">16</a>. </p>
+</div>
+
+    <a class="latex_link" href="chap-main.html#cor:public">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/gaussianSharpness_below_c0">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:constants_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:constants" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">2</span><span class="definition_thmtitle">Explicit Gaussian comparison constants</span></div>
+    <div class="thm_thmcontent"><p> The explicit constant is built from the sub-Gaussian tail cap </p>
+<div class="displaymath" id="a0000000016">
+  \[  s_G(t) := \min \{ 1, 2e^{-t^2/2}\} , \qquad t_0 := \sqrt{2 \log 2},  \]
+</div>
+<p> the total tail mass </p>
+<div class="displaymath" id="a0000000017">
+  \[  A := \int _0^\infty s_G(t)\, dt, \qquad B := A/2,  \]
+</div>
+<p> the unique threshold \(a {\gt} t_0\) solving </p>
+<div class="displaymath" id="a0000000018">
+  \[  H(a) = a s_G(a) + \int _a^\infty s_G(t)\, dt = B,  \]
+</div>
+<p> the height \(p_0 := s_G(a)\), the Gaussian tail quantile \(z\) satisfying \(\overline{\Phi }(z) = p_0\), and finally </p>
+<div class="displaymath" id="a0000000019">
+  \[  c_0 := \frac{B}{\varphi (z)}.  \]
+</div>
+<p> The public support file exposes these definitions exactly so the reader can see which constant is being proved optimal. </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#def:constants">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/gaussianScale">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:endpoint_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:endpoint" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">1</span><span class="definition_thmtitle">Endpoint quantities</span></div>
+    <div class="thm_thmcontent"><p> The declaration <span class="ttfamily">AdmissibleScale</span> says that a positive number \(c\) is admissible if every centered real random variable \(X\) with the two-sided tail bound </p>
+<div class="displaymath" id="a0000000015">
+  \[  \mathbb {P}(|X| {\gt} t) \le 2 e^{-t^2/2} \qquad (t \ge 0)  \]
+</div>
+<p> is convex-dominated by the centered Gaussian law of standard deviation \(c\). The quantity \(c_\star \) is then defined as the infimum of all such admissible scales. </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#def:endpoint">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/cStar">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:a-parameter_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:a-parameter" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">9</span><span class="lemma_thmtitle">The threshold parameter \(a\) and the tangent line</span></div>
+    <div class="thm_thmcontent"><p> There is a unique \(a {\gt} t_0\) such that \(H(a)=B\), and the resulting envelope \(J_G\) lies above the affine function \(u \mapsto B - p_0 u\) on \([0,\infty )\). </p>
+</div>
+
+    <a class="latex_link" href="sect0006.html#lem:a-parameter">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/J_ge_tangent_line">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:gaussian-call_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:gaussian-call" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12</span><span class="lemma_thmtitle">Closed form for the Gaussian stop-loss transform</span></div>
+    <div class="thm_thmcontent"><p> If \(G \sim \mathcal N(0,1)\) and \(c{\gt}0\), then the stop-loss transform of \(cG\) is </p>
+<div class="displaymath" id="a0000000034">
+  \[  g_c(u) = c\, \varphi (u/c) - u\, \overline{\Phi }(u/c).  \]
+</div>
+<p> In Lean this closed form is named <span class="ttfamily">gClosed</span>. </p>
+</div>
+
+    <a class="latex_link" href="sect0008.html#lem:gaussian-call">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/gSL_eq_gClosed">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:gaussian-tangent_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:gaussian-tangent" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">13</span><span class="lemma_thmtitle">Tangent-line contact at \(u_\star = c_0 z\)</span></div>
+    <div class="thm_thmcontent"><p> At the point \(u_\star := c_0 z\), the Gaussian stop-loss at scale \(c_0\) has slope \(-p_0\) and value \(B - p_0 u_\star \). Therefore the convexity of the Gaussian stop-loss implies </p>
+<div class="displaymath" id="a0000000036">
+  \[  g_{c_0}(u) \ge B - p_0 u \qquad \text{for all } u \in \mathbb {R}.  \]
+</div>
+</div>
+
+    <a class="latex_link" href="sect0008.html#lem:gaussian-tangent">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/gaussian_above_tangent_line">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:layercake_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:layercake" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">4</span><span class="lemma_thmtitle">Layer-cake for hinge functions</span></div>
+    <div class="thm_thmcontent"><p> For every probability measure \(\mu \) on \(\mathbb {R}\) and every \(u \ge 0\), the hinge integral can be written as </p>
+<div class="displaymath" id="a0000000022">
+  \[  \int (x-u)_+\, d\mu (x) = \int _u^\infty \mathbb {P}_\mu (x {\gt} t)\, dt.  \]
+</div>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lem:layercake">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/layer_cake_hinge">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:ratio_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:ratio" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">14</span><span class="lemma_thmtitle">Monotone-ratio input</span></div>
+    <div class="thm_thmcontent"><p> The ratio </p>
+<div class="displaymath" id="a0000000038">
+  \[  R(u) := \frac{\overline{\Phi }(u/c_0)}{2e^{-u^2/2}}  \]
+</div>
+<p> is increasing on \([a,\infty )\), and the corresponding monotone-ratio principle turns this derivative information into a comparison between the Gaussian stop-loss and the tail-integral branch of the envelope. </p>
+</div>
+
+    <a class="latex_link" href="sect0009.html#lem:ratio">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/monotone_ratio_principle">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lem:stoploss-tail_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lem:stoploss-tail" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">5</span><span class="lemma_thmtitle">Stop-loss as a tail integral</span></div>
+    <div class="thm_thmcontent"><p> If \(\mu \) is a probability measure with integrable identity, then for every \(u \ge 0\) its stop-loss transform can be written as the tail integral from Lemma&#160;<a href="sect0003.html#lem:layercake">4</a>. </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#lem:stoploss-tail">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/stopLoss_eq_integral_tail">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:cx-route_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:cx-route" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8</span><span class="theorem_thmtitle">Convex domination route at the sharp scale</span></div>
+    <div class="thm_thmcontent"><p>  If the Gaussian stop-loss transform dominates the envelope \(J_G\) pointwise, then every centered sub-Gaussian law is convex-dominated by the Gaussian comparator at that same scale. </p>
+</div>
+
+    <a class="latex_link" href="sect0005.html#thm:cx-route">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/convexDomination_c0_via_reduction">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:envelope_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:envelope" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">6</span><span class="theorem_thmtitle">Sharp stop-loss envelope under the sub-Gaussian cap</span></div>
+    <div class="thm_thmcontent"><p> Assume that \(\mu \) is centered and satisfies the tail cap \(\mathbb {P}_\mu (|x|{\gt}t)\le s_G(t)\) for every \(t \ge 0\). Then for every \(u \ge 0\), </p>
+<div class="displaymath" id="a0000000025">
+  \[  \mathrm{stopLoss}_\mu (u) \le J_G(u),  \]
+</div>
+<p> where \(J_G\) is the explicit envelope built from the constants \(B\), \(a\), and \(p_0\). </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#thm:envelope">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/stopLoss_envelope">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:extend-all-u_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:extend-all-u" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">7</span><span class="theorem_thmtitle">Extension from nonnegative thresholds to all thresholds</span></div>
+    <div class="thm_thmcontent"><p> The stop-loss control extends from \(u \ge 0\) to every real threshold \(u\) by applying the same envelope argument to \(-X\) and then using the mean-zero identity relating the stop-loss transforms of \(X\) and \(-X\). </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#thm:extend-all-u">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/stopLoss_extend_all_u">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:extremizer-stoploss_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:extremizer-stoploss" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">11</span><span class="theorem_thmtitle">The extremizer attains the envelope</span></div>
+    <div class="thm_thmcontent"><p>  For every \(u \ge 0\), </p>
+<div class="displaymath" id="a0000000032">
+  \[  \mathrm{stopLoss}_{\mu ^\star }(u) = J_G(u).  \]
+</div>
+</div>
+
+    <a class="latex_link" href="sect0007.html#thm:extremizer-stoploss">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/stopLoss_muStar_eq_J">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:extremizer-tail_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:extremizer-tail" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">10</span><span class="theorem_thmtitle">Extremal measure saturating the tail cap</span></div>
+    <div class="thm_thmcontent"><p> Lean constructs an explicit probability measure \(\mu ^\star \) with mean zero such that </p>
+<div class="displaymath" id="a0000000030">
+  \[  \mathbb {P}_{\mu ^\star }(|x|{\gt}t) = s_G(t) \qquad (t \ge 0).  \]
+</div>
+<p> This is the canonical witness showing that the stop-loss envelope is sharp. </p>
+</div>
+
+    <a class="latex_link" href="sect0007.html#thm:extremizer-tail">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/absTail_muStar_eq_s">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:gauss-ge-J_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:gauss-ge-J" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">15</span><span class="theorem_thmtitle">Gaussian stop-loss dominates the envelope</span></div>
+    <div class="thm_thmcontent"><p>  For every \(u \ge 0\), </p>
+<div class="displaymath" id="a0000000040">
+  \[  g_{c_0}(u) \ge J_G(u).  \]
+</div>
+</div>
+
+    <a class="latex_link" href="sect0009.html#thm:gauss-ge-J">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/gaussian_dominates_J">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:main_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:main" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">16</span><span class="theorem_thmtitle">Sharp one-dimensional convex sub-Gaussian comparison</span></div>
+    <div class="thm_thmcontent"><p>  The sharp admissible Gaussian scale is \(c_\star = c_0\). Equivalently: </p>
+<ol class="enumerate">
+  <li><p>Every centered real random variable satisfying \(\mathbb {P}(|X|{\gt}t)\le 2e^{-t^2/2}\) for all \(t \ge 0\) is convex-dominated by the centered Gaussian law of scale \(c_0\). </p>
+</li>
+  <li><p>For every \(c {\lt} c_0\), convex domination by the Gaussian law of scale \(c\) fails, already for the canonical witness \(\mu ^\star \) and an explicit hinge test function. </p>
+</li>
+</ol>
+</div>
+
+    <a class="latex_link" href="chap-main.html#thm:main">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/sharp_convexSubgaussianComparison">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:public-support_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:public-support" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">3</span><span class="theorem_thmtitle">Named comparison and sharpness results</span></div>
+    <div class="thm_thmcontent"><p> The theorem <span class="ttfamily">gaussianDomination_c0</span> is the comparison statement at the optimal Gaussian scale: it shows that the Gaussian law at scale \(c_0\) dominates every admissible random variable against every convex integrable test function. The theorem <span class="ttfamily">gaussianSharpness_below_c0</span> proves that every smaller positive scale \(c {\lt} c_0\) fails already for the canonical witness measure \(\mu ^\star \) and a hinge test function of the form \(x \mapsto (x-u)_+\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#thm:public-support">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="../../docs/find/#doc/gaussianSharpness_below_c0">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+</div>
+</div> <!-- content -->
+</div> <!-- wrapper -->
+<script src="js/jquery.min.js" type="text/javascript"></script>
+
+<script src="js/d3.min.js"></script>
+<script src="js/hpcc.min.js"></script>
+<script src="js/d3-graphviz.js"></script>
+
+<script type="text/javascript">
+const graphContainer = d3.select("#graph");
+const width = graphContainer.node().clientWidth;
+const height = graphContainer.node().clientHeight;
+
+
+graphContainer.graphviz({useWorker: true})
+    .width(width)
+    .height(height)
+    .fit(true)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"def:endpoint"	[color=green,		fillcolor="#B0ECA3",		label=endpoint,		shape=box,		style=filled];	"lem:a-parameter"	[color=green,		fillcolor="#1CAC78",		label="a-parameter",		shape=ellipse,		style=filled];	"lem:ratio"	[color=green,		fillcolor="#1CAC78",		label=ratio,		shape=ellipse,		style=filled];	"thm:gauss-ge-J"	[color=green,		fillcolor="#1CAC78",		label="gauss-ge-J",		shape=ellipse,		style=filled];	"lem:ratio" -> "thm:gauss-ge-J"	[style=dashed];	"thm:main"	[color=green,		fillcolor="#1CAC78",		label=main,		shape=ellipse,		style=filled];	"thm:gauss-ge-J" -> "thm:main"	[style=dashed];	"thm:extend-all-u"	[color=green,		fillcolor="#1CAC78",		label="extend-all-u",		shape=ellipse,		style=filled];	"thm:cx-route"	[color=green,		fillcolor="#1CAC78",		label="cx-route",		shape=ellipse,		style=filled];	"thm:extend-all-u" -> "thm:cx-route"	[style=dashed];	"thm:cx-route" -> "thm:main"	[style=dashed];	"lem:layercake"	[color=green,		fillcolor="#1CAC78",		label=layercake,		shape=ellipse,		style=filled];	"lem:stoploss-tail"	[color=green,		fillcolor="#1CAC78",		label="stoploss-tail",		shape=ellipse,		style=filled];	"def:constants"	[color=green,		fillcolor="#B0ECA3",		label=constants,		shape=box,		style=filled];	"lem:gaussian-call"	[color=green,		fillcolor="#1CAC78",		label="gaussian-call",		shape=ellipse,		style=filled];	"lem:gaussian-call" -> "thm:gauss-ge-J"	[style=dashed];	"lem:gaussian-tangent"	[color=green,		fillcolor="#1CAC78",		label="gaussian-tangent",		shape=ellipse,		style=filled];	"lem:gaussian-tangent" -> "thm:gauss-ge-J"	[style=dashed];	"thm:public-support"	[color=green,		fillcolor="#1CAC78",		label="public-support",		shape=ellipse,		style=filled];	"thm:envelope"	[color=green,		fillcolor="#1CAC78",		label=envelope,		shape=ellipse,		style=filled];	"thm:extremizer-stoploss"	[color=green,		fillcolor="#1CAC78",		label="extremizer-stoploss",		shape=ellipse,		style=filled];	"thm:envelope" -> "thm:extremizer-stoploss"	[style=dashed];	"thm:extremizer-stoploss" -> "thm:main"	[style=dashed];	"thm:extremizer-tail"	[color=green,		fillcolor="#1CAC78",		label="extremizer-tail",		shape=ellipse,		style=filled];	"thm:extremizer-tail" -> "thm:extremizer-stoploss"	[style=dashed];	"cor:public"	[color=green,		fillcolor="#1CAC78",		label=public,		shape=ellipse,		style=filled];}`)
+    .on("end", interactive);
+
+latexLabelEscaper = function(label) {
+  return label.replace(/\./g, '\\.').replace(/:/g, '\\:')
+}
+
+clickNode = function() {
+  $("#statements div").hide()
+  var node_id = $('text', this).text();
+  $('.thm').hide();
+  $('#'+latexLabelEscaper(node_id)).show().children().show();
+}
+function interactive() {
+    $("span#legend_title").on("click", function () {
+           $(this).siblings('dl').toggle();
+        })
+
+    d3.selectAll('.node')
+        .attr('pointer-events', 'fill')
+        .on('click', function () {
+           var title = d3.select(this).selectAll('title').text().trim();
+           $('#statements > div').hide()
+           $('.thm').hide();
+           $('#'+latexLabelEscaper(title)+'_modal').show().children().show().children().show();
+           $('#statements').show()
+        });
+
+    d3.selectAll('.dep-closebtn').on('click', function() {
+        var modal =
+            d3.select(this).node().parentNode.parentNode.parentNode ;
+        d3.select(modal).style('display', 'none');
+    });
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+\chapter{Main theorem}\label{chap:main}
+
+Combining the envelope domination from Chapter~\ref{chap:gaussian-comparator}
+with the extremal witness from Chapter~\ref{chap:envelope} yields the sharp
+comparison theorem.
+
+\begin{theorem}[Sharp one-dimensional convex sub-Gaussian comparison]\label{thm:main}
+\lean{sharp_convexSubgaussianComparison}\leanok
+\uses{thm:cx-route,thm:extremizer-stoploss,thm:gauss-ge-J}
+The sharp admissible Gaussian scale is $c_\star = c_0$. Equivalently:
+\begin{enumerate}
+\item Every centered real random variable satisfying
+  $\Prb(|X|>t)\le 2e^{-t^2/2}$ for all $t \ge 0$ is convex-dominated by the
+  centered Gaussian law of scale $c_0$.
+\item For every $c < c_0$, convex domination by the Gaussian law of scale $c$
+  fails, already for the canonical witness $\mu^\star$ and an explicit hinge
+  test function.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}\leanok
+The domination part is now formal bookkeeping. Theorem~\ref{thm:gauss-ge-J}
+shows that the Gaussian stop-loss transform at scale $c_0$ dominates the sharp
+envelope $J_G$. Theorem~\ref{thm:cx-route} then upgrades this stop-loss
+comparison to full convex domination.
+
+For sharpness, Theorem~\ref{thm:extremizer-stoploss} identifies the stop-loss of
+the canonical witness $\mu^\star$ with the envelope itself. At the specific
+threshold $u = cz$, the Gaussian stop-loss of scale $c$ evaluates to
+$c\varphi(z) - up_0$, while the envelope is at least $B - up_0$. If
+$c < c_0 = B/\varphi(z)$, then the witness stop-loss is strictly larger. Taking
+the hinge function $x \mapsto (x-u)_+$ therefore exhibits a convex test
+function for which the comparison fails.
+\end{proof}
+
+\begin{corollary}[Named comparison and sharpness statements]\label{cor:public}
+\lean{gaussianDomination_c0}\leanok
+\lean{gaussianSharpness_below_c0}\leanok
+These are the two separately stated results corresponding to the domination and
+sharpness clauses of Theorem~\ref{thm:main}.
+\end{corollary}
+
+\begin{proof}\leanok
+The endpoint theorem in \texttt{GaussianMain.lean} bundles the equality
+$c_\star = c_0$ together with the two quantified conclusions. The file
+\texttt{GaussianAsymptotics.lean} states the comparison and sharpness
+components separately so that a reader can inspect the main inequality and the
+canonical counterexample without opening the internal proof machinery.
+\end{proof}

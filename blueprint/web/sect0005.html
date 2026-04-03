@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>From stop-loss control to convex domination</title>
+<link rel="next" href="chap-envelope.html" title="Envelope and extremizer" />
+<link rel="prev" href="sect0004.html" title="The sharp stop-loss envelope" />
+<link rel="up" href="chap-stoploss.html" title="Stop-loss route" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">The sharp one-dimensional convex sub-Gaussian comparison constant — Blueprint</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="chap-overview.html"><span class="toc_ref">1</span> <span class="toc_entry">Overview</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="chap-overview.html#a0000000014"><span class="toc_ref"></span> <span class="toc_entry">Navigation</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="chap-setup.html"><span class="toc_ref">2</span> <span class="toc_entry">Setup and endpoint constants</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Reader-facing theorem surface</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">2.2</span> <span class="toc_entry">Comparison and sharpness statements</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active">
+  <a href="chap-stoploss.html"><span class="toc_ref">3</span> <span class="toc_entry">Stop-loss route</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="sect0003.html"><span class="toc_ref">3.1</span> <span class="toc_entry">Layer-cake and stop-loss identities</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">3.2</span> <span class="toc_entry">The sharp stop-loss envelope</span></a>
+ </li>
+<li class=" active current">
+  <a href="sect0005.html"><span class="toc_ref">3.3</span> <span class="toc_entry">From stop-loss control to convex domination</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="chap-envelope.html"><span class="toc_ref">4</span> <span class="toc_entry">Envelope and extremizer</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0006.html"><span class="toc_ref">4.1</span> <span class="toc_entry">The envelope parameters</span></a>
+ </li>
+<li class="">
+  <a href="sect0007.html"><span class="toc_ref">4.2</span> <span class="toc_entry">The canonical extremal measure</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="chap-gaussian-comparator.html"><span class="toc_ref">5</span> <span class="toc_entry">Gaussian comparator</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0008.html"><span class="toc_ref">5.1</span> <span class="toc_entry">Closed form and tangent point</span></a>
+ </li>
+<li class="">
+  <a href="sect0009.html"><span class="toc_ref">5.2</span> <span class="toc_entry">The tail region \(u \ge a\)</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="chap-main.html"><span class="toc_ref">6</span> <span class="toc_entry">Main theorem</span></a>
+ </li>
+<li class="">
+  <a href="chap-modules.html"><span class="toc_ref">7</span> <span class="toc_entry">Module guide</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0010.html"><span class="toc_ref">7.1</span> <span class="toc_entry">Public files</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html"><span class="toc_ref">7.2</span> <span class="toc_entry">Internal proof file</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">7.3</span> <span class="toc_entry">Reading order</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000006">3.3 From stop-loss control to convex domination</h1>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:cx-route">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8</span>
+    <span class="theorem_thmtitle">Convex domination route at the sharp scale</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0005.html#thm:cx-route">#</a>
+    
+    <a class="icon proof" href="sect0005.html#a0000000027"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0004.html#thm:extend-all-u">Theorem 7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="../../docs/find/#doc/convexDomination_c0_via_reduction" class="lean_decl">convexDomination_c0_via_reduction</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  If the Gaussian stop-loss transform dominates the envelope \(J_G\) pointwise, then every centered sub-Gaussian law is convex-dominated by the Gaussian comparator at that same scale. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000027">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>The formal route first proves the comparison for simple convex test functions, that is, finite sums of affine functions and hinges. The lemmas <span class="ttfamily">max_affine_is_simple</span> and <span class="ttfamily">convexReduction_to_simple_c0</span> then approximate an arbitrary convex integrable function from below by a monotone sequence of such simple convex functions. Monotone convergence passes the inequality to the limit and yields the full convex-order statement. </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0004.html" title="The sharp stop-loss envelope"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="chap-stoploss.html" title="Stop-loss route"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="chap-envelope.html" title="Envelope and extremizer"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

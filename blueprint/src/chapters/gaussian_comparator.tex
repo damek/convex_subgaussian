@@ -1,0 +1,86 @@
+\chapter{Gaussian comparator}\label{chap:gaussian-comparator}
+
+The next step is to compare the sharp envelope $J_G$ to the exact stop-loss
+transform of a centered Gaussian. The Gaussian side has a closed form, and the
+proof that it dominates $J_G$ splits into an affine-contact argument on
+$[0,a]$ and a monotone-ratio argument on $[a,\infty)$.
+
+\section{Closed form and tangent point}
+
+\begin{lemma}[Closed form for the Gaussian stop-loss transform]\label{lem:gaussian-call}
+\lean{gSL_eq_gClosed}\leanok
+If $G \sim \mathcal N(0,1)$ and $c>0$, then the stop-loss transform of $cG$ is
+\[
+  g_c(u) = c\,\varphi(u/c) - u\,\overline{\Phi}(u/c).
+\]
+In Lean this closed form is named \texttt{gClosed}.
+\end{lemma}
+
+\begin{proof}\leanok
+The proof evaluates the Gaussian stop-loss integral by rewriting it as
+$\int_u^\infty (x-u)\,d\gamma_c(x)$ and then integrating by parts. The result is
+the standard Black--Scholes style formula for a Gaussian call function.
+\end{proof}
+
+\begin{lemma}[Tangent-line contact at \(u_\star = c_0 z\)]\label{lem:gaussian-tangent}
+\lean{gaussian_tangent}\leanok
+\lean{gaussian_above_tangent_line}\leanok
+At the point $u_\star := c_0 z$, the Gaussian stop-loss at scale $c_0$ has
+slope $-p_0$ and value $B - p_0 u_\star$. Therefore the convexity of the
+Gaussian stop-loss implies
+\[
+  g_{c_0}(u) \ge B - p_0 u \qquad \text{for all } u \in \R.
+\]
+\end{lemma}
+
+\begin{proof}\leanok
+The slope statement is the identity
+$g_{c_0}'(u)=-\overline{\Phi}(u/c_0)$ evaluated at $u=c_0 z$, where
+$\overline{\Phi}(z)=p_0$ by definition. The value statement is the algebraic
+identity $c_0 \varphi(z)=B$. Once both are known, convexity gives the global
+supporting-line inequality.
+\end{proof}
+
+\section{The tail region \(u \ge a\)}
+
+\begin{lemma}[Monotone-ratio input]\label{lem:ratio}
+\lean{R_strict_mono_on}\leanok
+\lean{monotone_ratio_principle}\leanok
+The ratio
+\[
+  R(u) := \frac{\overline{\Phi}(u/c_0)}{2e^{-u^2/2}}
+\]
+is increasing on $[a,\infty)$, and the corresponding monotone-ratio principle
+turns this derivative information into a comparison between the Gaussian
+stop-loss and the tail-integral branch of the envelope.
+\end{lemma}
+
+\begin{proof}\leanok
+The derivative of $\log R$ is controlled using Mills-ratio bounds for the
+Gaussian tail. The formal proof isolates this analytic step in
+\texttt{R\_strict\_mono\_on}. The general lemma
+\texttt{monotone\_ratio\_principle} then converts the sign of the derivative
+into a monotonicity statement for the difference of two functions that have the
+same limit at infinity.
+\end{proof}
+
+\begin{theorem}[Gaussian stop-loss dominates the envelope]\label{thm:gauss-ge-J}
+\lean{gaussian_dominates_J}\leanok
+\uses{lem:gaussian-call,lem:gaussian-tangent,lem:ratio}
+For every $u \ge 0$,
+\[
+  g_{c_0}(u) \ge J_G(u).
+\]
+\end{theorem}
+
+\begin{proof}\leanok
+On the interval $[0,a]$, the envelope equals the affine function
+$B-p_0u$, so Lemma~\ref{lem:gaussian-tangent} gives the desired inequality
+immediately. For $u \ge a$, the envelope is the tail integral
+$\int_u^\infty s_G(t)\,dt$. The difference between the Gaussian stop-loss and
+that tail integral has derivative determined by the ratio $R(u)$ from
+Lemma~\ref{lem:ratio}; it is nonnegative at $u=a$ because the affine-contact
+inequality is already known there, and it tends to $0$ at infinity. The
+monotone-ratio argument then forces the whole tail-region difference to stay
+nonnegative.
+\end{proof}

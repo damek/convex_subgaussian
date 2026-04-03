@@ -39,7 +39,6 @@ The axiom audit for the key endpoint theorems should report only:
 GitHub Actions uses `leanchecker` as its kernel-replay audit:
 
 ```sh
-lake env leanchecker ConvexSubgaussian
 lake env leanchecker ConvexSubgaussian.GaussianMain
 lake env leanchecker ConvexSubgaussian.GaussianAsymptotics
 ```

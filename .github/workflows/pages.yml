@@ -41,11 +41,11 @@ jobs:
       - name: Axiom audit
         run: lake env lean scripts/print_axioms_check.lean
 
-      - name: Kernel replay audit
-        run: |
-          lake env leanchecker ConvexSubgaussian
-          lake env leanchecker ConvexSubgaussian.GaussianMain
-          lake env leanchecker ConvexSubgaussian.GaussianAsymptotics
+      - name: Kernel replay audit (GaussianMain)
+        run: lake env leanchecker ConvexSubgaussian.GaussianMain
+
+      - name: Kernel replay audit (GaussianAsymptotics)
+        run: lake env leanchecker ConvexSubgaussian.GaussianAsymptotics
 
       - name: Build Lean docs
         env:

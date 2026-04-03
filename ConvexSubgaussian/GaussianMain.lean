@@ -19,9 +19,21 @@ result. It contains only the reader-facing final definition of the optimal
 comparison scale and the final sharp theorem.
 -/
 
-/-- `AdmissibleScale c` means that every tail-sense one-sub-Gaussian real random
-variable is convex-dominated by `cG`, for every convex test function whose two
-expectations are finite. -/
+/-- `AdmissibleScale c` is the statement
+```lean
+0 < c ∧
+  ∀ {Ω : Type} [MeasurableSpace Ω]
+    (P : Measure Ω) [IsProbabilityMeasure P]
+    (X : Ω → Real), IsOneSubgaussian P X →
+    ∀ {f : Real → Real}, ConvexOn Real Set.univ f →
+      Integrable (fun ω => f (X ω)) P →
+      Integrable f (gaussianScale c) →
+      (∫ ω, f (X ω) ∂P) <= (∫ x, f x ∂(gaussianScale c))
+```
+
+In words: `c` is admissible iff `c > 0` and every tail-sense one-sub-Gaussian
+real random variable is convex-dominated by the centered Gaussian law of scale
+`c`, for every convex test function whose two expectations are finite. -/
 def AdmissibleScale (c : Real) : Prop :=
   0 < c ∧
     ∀ {Ω : Type} [MeasurableSpace Ω]

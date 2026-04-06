@@ -6,7 +6,7 @@ formalization.
 It is separate from:
 
 - the Lean source in `ConvexSubgaussian/`
-- the paper (placeholder on the landing page)
+- the paper at <https://arxiv.org/abs/2604.03170>
 
 ## What this blueprint covers
 

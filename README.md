@@ -4,6 +4,8 @@ This repository contains the Lean formalization of the sharp one-dimensional
 Gaussian convex comparison theorem for mean-zero real random variables with
 two-sided sub-Gaussian tails.
 
+Paper: <https://arxiv.org/abs/2604.03170>
+
 The repository includes:
 
 - the Lean source on `main`
@@ -111,6 +113,5 @@ two named auxiliary results:
 
 ## Notes
 
-- The paper link is a placeholder until the preprint is public.
 - Repository privacy is a GitHub-side setting; this source tree is prepared for an initially private repo.
 - Legacy archives, local draft workspaces, and build trees are intentionally excluded from the cleaned public repo.
